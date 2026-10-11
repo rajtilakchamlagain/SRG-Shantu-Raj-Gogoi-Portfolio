@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
+import Internships from './components/Internships';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
@@ -9,12 +10,13 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white pb-16 md:pb-0">
       <Navbar />
       <main className="flex-grow">
         <Hero />
         <About />
         <Expertise />
+        <Internships />
         <Projects />
         <Experience />
         <Contact />

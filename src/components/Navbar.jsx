@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Mail, ChevronRight, Home, Wrench, Briefcase, GraduationCap, Send } from 'lucide-react';
+import { Menu, X, Mail, ChevronRight, Home, Wrench, Briefcase, GraduationCap, Send, FileText, Download } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import SRGLogo from './SRGLogo';
 
@@ -12,7 +12,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 15);
       
-      const sections = ['about', 'expertise', 'projects', 'experience', 'contact'];
+      const sections = ['about', 'expertise', 'projects', 'internships', 'experience', 'contact'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -31,16 +31,15 @@ export default function Navbar() {
   const navLinks = [
     { name: "About", href: "#about", id: "about", icon: Home },
     { name: "Expertise", href: "#expertise", id: "expertise", icon: Wrench },
-    { name: "Projects", href: "#projects", id: "projects", icon: Briefcase },
-    { name: "Roadmap", href: "#experience", id: "experience", icon: GraduationCap },
+    { name: "Internships", href: "#internships", id: "internships", icon: Briefcase },
+    { name: "Projects", href: "#projects", id: "projects", icon: Wrench },
+    { name: "Credentials", href: "#experience", id: "experience", icon: GraduationCap },
     { name: "Contact", href: "#contact", id: "contact", icon: Send }
   ];
 
   return (
     <>
-      {/* ==========================================================
-          TOP NAVIGATION BAR (DESKTOP & MOBILE HEADER)
-         ========================================================== */}
+      {/* Top Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-safe ${
         scrolled 
           ? 'bg-[#070b14]/90 backdrop-blur-xl border-b border-slate-800/80 py-2.5 sm:py-3 shadow-xl' 
@@ -49,7 +48,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
-            {/* SRG Brand Identity with Custom Monogram Logo */}
+            {/* SRG Brand Identity */}
             <a href="#" className="flex items-center gap-2.5 sm:gap-3 group active:scale-95 transition-transform">
               <SRGLogo className="w-8 h-8 sm:w-10 sm:h-10 group-hover:scale-105 transition-transform" />
               <div>
@@ -66,12 +65,12 @@ export default function Navbar() {
             </a>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
+            <nav className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all ${
+                  className={`px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all ${
                     activeTab === link.id
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'text-slate-300 hover:text-white hover:bg-slate-800/70'
@@ -82,25 +81,42 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Desktop Action */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* Desktop Actions: Resume & Contact */}
+            <div className="hidden md:flex items-center gap-2.5">
+              <a
+                href={personalInfo.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Shantu_Raj_Gogoi_Resume.pdf"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-200 hover:text-white text-xs font-bold transition-all shadow-sm active:scale-95"
+              >
+                <FileText size={14} className="text-blue-400" />
+                <span>Resume (PDF)</span>
+              </a>
+
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 active:scale-95"
               >
-                <Mail size={15} />
+                <Mail size={14} />
                 <span>Get in Touch</span>
               </a>
             </div>
 
-            {/* Mobile Top Right Badge / Menu trigger */}
+            {/* Mobile Top Actions */}
             <div className="md:hidden flex items-center gap-2">
               <a
-                href="#contact"
-                className="px-3 py-1.5 rounded-lg bg-blue-600 active:bg-blue-700 text-white text-xs font-bold transition-all"
+                href={personalInfo.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Shantu_Raj_Gogoi_Resume.pdf"
+                className="px-2.5 py-1.5 rounded-lg bg-slate-850 border border-slate-700 text-blue-400 active:bg-slate-800 text-xs font-bold flex items-center gap-1"
+                aria-label="Download Resume"
               >
-                Contact
+                <Download size={13} />
+                <span>Resume</span>
               </a>
+
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-xl bg-slate-850/90 border border-slate-700/80 text-slate-200 active:scale-90 transition-transform"
@@ -134,20 +150,36 @@ export default function Navbar() {
                   </a>
                 );
               })}
+              <div className="pt-2 border-t border-slate-800/80">
+                <a
+                  href={personalInfo.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Shantu_Raj_Gogoi_Resume.pdf"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold"
+                >
+                  <Download size={14} />
+                  <span>Download Shantu_Raj_Gogoi_Resume.pdf</span>
+                </a>
+              </div>
             </div>
           </div>
         )}
       </header>
 
-      {/* ==========================================================
-          NATIVE MOBILE BOTTOM DOCK (App-Like Ergonomic Navigation)
-         ========================================================== */}
+      {/* Mobile Bottom Navigation Dock */}
       <nav 
         aria-label="Mobile Dock"
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#070b14]/90 backdrop-blur-2xl border-t border-slate-800/80 pb-safe shadow-[0_-10px_25px_rgba(0,0,0,0.5)]"
       >
         <div className="grid grid-cols-5 h-16 max-w-md mx-auto items-center px-1">
-          {navLinks.map((link) => {
+          {[
+            { name: "About", href: "#about", id: "about", icon: Home },
+            { name: "Skills", href: "#expertise", id: "expertise", icon: Wrench },
+            { name: "Interns", href: "#internships", id: "internships", icon: Briefcase },
+            { name: "Projects", href: "#projects", id: "projects", icon: Wrench },
+            { name: "Contact", href: "#contact", id: "contact", icon: Send }
+          ].map((link) => {
             const IconComponent = link.icon;
             const isActive = activeTab === link.id;
             return (
