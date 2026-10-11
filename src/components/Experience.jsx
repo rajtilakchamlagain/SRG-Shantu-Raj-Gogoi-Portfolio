@@ -3,7 +3,7 @@ import { GraduationCap, Award, Calendar, MapPin, CheckCircle, FileText, Download
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 sm:py-20 relative bg-[#070b14]">
+    <section id="experience" className="py-16 sm:py-20 relative bg-[#0e1320] border-b border-[#1f293d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -23,9 +23,9 @@ export default function Experience() {
             target="_blank"
             rel="noopener noreferrer"
             download="Shantu_Raj_Gogoi_Resume.pdf"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-400 hover:bg-blue-600 hover:text-white transition-all text-xs font-bold active:scale-95"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#111827] border border-[#1f293d] hover:border-[#334155] text-slate-200 hover:text-white transition-colors text-xs font-semibold active:scale-95"
           >
-            <Download size={15} />
+            <Download size={14} className="text-blue-400" />
             <span>Download Official Resume (PDF)</span>
           </a>
         </div>
@@ -40,9 +40,9 @@ export default function Experience() {
             </h3>
 
             {educationAndTimeline.map((item, idx) => (
-              <div key={idx} className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-7 space-y-4">
+              <div key={idx} className="bg-[#111827] border border-[#1f293d] rounded-xl p-6 sm:p-7 space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 font-medium bg-blue-500/10 px-2.5 py-1 rounded">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 font-medium bg-blue-500/10 px-2.5 py-1 rounded border border-blue-500/20">
                     <Calendar size={12} />
                     {item.period}
                   </span>
@@ -53,7 +53,7 @@ export default function Experience() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-white">
+                  <h4 className="text-base sm:text-lg font-bold text-white">
                     {item.role}
                   </h4>
                   <h5 className="text-sm font-medium text-slate-300 mt-0.5">
@@ -66,7 +66,7 @@ export default function Experience() {
                 </p>
 
                 {item.bulletPoints && (
-                  <ul className="space-y-2 pt-2 border-t border-slate-800/80 text-xs sm:text-sm text-slate-300">
+                  <ul className="space-y-2 pt-2 border-t border-[#1f293d] text-xs sm:text-sm text-slate-300">
                     {item.bulletPoints.map((point, pIdx) => (
                       <li key={pIdx} className="flex items-start gap-2">
                         <CheckCircle size={14} className="text-blue-400 shrink-0 mt-0.5" />
@@ -86,19 +86,19 @@ export default function Experience() {
               Certifications & Training
             </h3>
 
-            <div className="space-y-3.5">
+            <div className="space-y-3">
               {certifications.map((cert, idx) => (
-                <div key={idx} className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 sm:p-5 hover:border-indigo-500/40 transition-colors">
+                <div key={idx} className="bg-[#111827] border border-[#1f293d] rounded-xl p-4 sm:p-5 hover:border-[#334155] transition-colors">
                   <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-1.5">
-                    <span className="text-indigo-400 font-semibold px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20">
+                    <span className="text-blue-400 font-semibold px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">
                       {cert.badge}
                     </span>
                     <span>{cert.year}</span>
                   </div>
-                  <h4 className="text-sm font-bold text-white leading-snug">
+                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">
                     {cert.title}
                   </h4>
-                  <p className="text-xs text-slate-400 mt-1 font-mono">
+                  <p className="text-[11px] sm:text-xs text-slate-400 mt-1 font-mono">
                     {cert.issuer}
                   </p>
                 </div>
@@ -106,12 +106,12 @@ export default function Experience() {
             </div>
 
             {/* Resume Callout Card */}
-            <div className="bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/30 rounded-2xl p-5 sm:p-6 text-xs text-slate-300 space-y-3">
+            <div className="bg-[#111827] border border-[#1f293d] rounded-xl p-5 sm:p-6 text-xs text-slate-300 space-y-3">
               <div className="font-bold text-sm text-white flex items-center gap-2">
                 <FileText size={16} className="text-blue-400" />
                 Verified Resume Available
               </div>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-slate-400">
                 Contains complete academic scores, training certificates from TRTC MSME, and verifiable recommendations from Numaligarh Refinery Limited.
               </p>
               <a
@@ -119,7 +119,7 @@ export default function Experience() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Shantu_Raj_Gogoi_Resume.pdf"
-                className="inline-flex items-center gap-1.5 text-blue-400 font-bold hover:underline"
+                className="inline-flex items-center gap-1.5 text-blue-400 font-semibold hover:underline"
               >
                 <span>Download Shantu_Raj_Gogoi_Resume.pdf</span>
                 <Download size={13} />

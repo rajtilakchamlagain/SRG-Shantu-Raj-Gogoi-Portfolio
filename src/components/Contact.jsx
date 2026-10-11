@@ -18,21 +18,21 @@ export default function Contact() {
     e.preventDefault();
     setSubmitted(true);
     confetti({
-      particleCount: 80,
-      spread: 60,
+      particleCount: 60,
+      spread: 50,
       origin: { y: 0.7 }
     });
     window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(formState.subject || 'Engineering Inquiry: Shantu Raj Gogoi')}&body=${encodeURIComponent(`From: ${formState.name} (${formState.email})\n\n${formState.message}`)}`;
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-24 relative bg-[#090e1a] border-t border-slate-800/80">
+    <section id="contact" className="py-20 sm:py-24 relative bg-[#0b0f19]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-14 text-center mx-auto">
           <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
-            06. Candidate Engagement
+            06. Direct Outreach
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
             Initiate Contact & Discussion
@@ -45,7 +45,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 max-w-5xl mx-auto">
           
           {/* Left Column: Direct Info Card */}
-          <div className="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 sm:space-y-8">
+          <div className="lg:col-span-5 bg-[#111827] border border-[#1f293d] rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6 sm:space-y-8">
             <div className="space-y-5">
               <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
                 Direct Contact Channels
@@ -53,7 +53,7 @@ export default function Contact() {
 
               <div className="space-y-3.5">
                 {/* Email Item */}
-                <div className="bg-slate-950/70 border border-slate-800 p-3.5 sm:p-4 rounded-xl space-y-1.5">
+                <div className="bg-[#0b0f19] border border-[#1f293d] p-3.5 sm:p-4 rounded-lg space-y-1.5">
                   <div className="text-xs font-mono text-slate-400 flex items-center justify-between">
                     <span>Email Address:</span>
                     <button 
@@ -73,7 +73,7 @@ export default function Contact() {
                 </div>
 
                 {/* Phone Item */}
-                <div className="bg-slate-950/70 border border-slate-800 p-3.5 sm:p-4 rounded-xl">
+                <div className="bg-[#0b0f19] border border-[#1f293d] p-3.5 sm:p-4 rounded-lg">
                   <div className="text-xs font-mono text-slate-400 mb-1">Direct Mobile:</div>
                   <a 
                     href={`tel:${personalInfo.phone}`}
@@ -85,7 +85,7 @@ export default function Contact() {
                 </div>
 
                 {/* Location Item */}
-                <div className="bg-slate-950/70 border border-slate-800 p-3.5 sm:p-4 rounded-xl">
+                <div className="bg-[#0b0f19] border border-[#1f293d] p-3.5 sm:p-4 rounded-lg">
                   <div className="text-xs font-mono text-slate-400 mb-1">Location:</div>
                   <div className="text-xs sm:text-sm font-semibold text-slate-200 flex items-center gap-2">
                     <MapPin size={14} className="text-emerald-400" />
@@ -94,7 +94,7 @@ export default function Contact() {
                 </div>
 
                 {/* LinkedIn Link */}
-                <div className="bg-slate-950/70 border border-slate-800 p-3.5 sm:p-4 rounded-xl">
+                <div className="bg-[#0b0f19] border border-[#1f293d] p-3.5 sm:p-4 rounded-lg">
                   <div className="text-xs font-mono text-slate-400 mb-1">LinkedIn Profile:</div>
                   <a 
                     href={personalInfo.linkedin}
@@ -111,13 +111,13 @@ export default function Contact() {
             </div>
 
             {/* Resume Download Feature in Contact Column */}
-            <div className="pt-4 border-t border-slate-800">
+            <div className="pt-4 border-t border-[#1f293d]">
               <a
                 href={personalInfo.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Shantu_Raj_Gogoi_Resume.pdf"
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-white text-xs font-bold transition-all border border-slate-700"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-[#182234] hover:bg-[#1f293d] active:scale-95 text-white text-xs font-semibold transition-all border border-[#28354d]"
               >
                 <Download size={14} />
                 <span>Download Shantu_Raj_Gogoi_Resume.pdf</span>
@@ -126,19 +126,19 @@ export default function Contact() {
           </div>
 
           {/* Right Column: Direct Message Transmission Form */}
-          <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8">
+          <div className="lg:col-span-7 bg-[#111827] border border-[#1f293d] rounded-xl p-6 sm:p-8">
             <h3 className="text-base sm:text-lg font-bold text-white mb-6">
               Send a Message or Technical Inquiry
             </h3>
 
             {submitted ? (
-              <div className="p-8 text-center bg-slate-950/60 rounded-xl border border-emerald-500/30 space-y-3">
+              <div className="p-8 text-center bg-[#0b0f19] rounded-lg border border-emerald-500/30 space-y-3">
                 <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
                   <Check size={24} />
                 </div>
-                <h4 className="text-base sm:text-lg font-bold text-white">Opening Your Mail Client!</h4>
+                <h4 className="text-base sm:text-lg font-bold text-white">Opening Your Mail Client</h4>
                 <p className="text-xs sm:text-sm text-slate-400 max-w-sm mx-auto">
-                  Your default email client has been triggered. You can also write directly to {personalInfo.email}.
+                  Your default email application is launching. You can also write directly to {personalInfo.email}.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -160,7 +160,7 @@ export default function Contact() {
                       placeholder="e.g. Hiring Manager / Recruiter"
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                      className="w-full px-3.5 py-2.5 bg-[#0b0f19] border border-[#1f293d] rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
                     />
                   </div>
                   <div>
@@ -173,7 +173,7 @@ export default function Contact() {
                       placeholder="contact@company.com"
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                      className="w-full px-3.5 py-2.5 bg-[#0b0f19] border border-[#1f293d] rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
                     />
                   </div>
                 </div>
@@ -188,7 +188,7 @@ export default function Contact() {
                     placeholder="e.g. Mechanical CAD / FEA Trainee Opportunity"
                     value={formState.subject}
                     onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-[#0b0f19] border border-[#1f293d] rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
 
@@ -202,13 +202,13 @@ export default function Contact() {
                     placeholder="Describe role requirements, team details, or project scope..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                    className="w-full px-3.5 py-2.5 bg-[#0b0f19] border border-[#1f293d] rounded-lg text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 flex items-center justify-center gap-2"
+                  className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white rounded-lg font-semibold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
                 >
                   <Send size={15} />
                   <span>Send Message</span>

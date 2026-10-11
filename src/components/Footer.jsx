@@ -1,5 +1,5 @@
 import { personalInfo, creatorInfo } from '../data/portfolioData';
-import { ArrowUp, Mail, Instagram, ExternalLink, Github, Linkedin, Code2 } from 'lucide-react';
+import { ArrowUp, Mail, Instagram, Github, Linkedin, Code2 } from 'lucide-react';
 import SRGLogo from './SRGLogo';
 
 export default function Footer() {
@@ -8,15 +8,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#050811] border-t border-slate-800/80 pt-12 pb-24 md:pb-12 text-slate-400 text-xs sm:text-sm">
+    <footer className="bg-[#080c14] border-t border-[#1f293d] pt-12 pb-24 md:pb-12 text-slate-400 text-xs sm:text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/60">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#1f293d]">
           
           {/* Left Brand info with SRG Symbol */}
           <div className="flex items-center gap-3.5 text-center md:text-left">
-            <SRGLogo className="w-10 h-10 shrink-0" />
+            <SRGLogo className="w-9 h-9 shrink-0" />
             <div className="space-y-0.5">
               <div className="font-bold text-white text-base tracking-tight flex items-center gap-2 justify-center md:justify-start">
                 <span>{personalInfo.name}</span>
@@ -34,26 +34,26 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <a 
               href={`mailto:${personalInfo.email}`}
-              className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 active:scale-95 transition-all"
+              className="p-2.5 rounded-lg bg-[#111827] border border-[#1f293d] text-slate-300 hover:text-white hover:border-[#334155] active:scale-95 transition-all"
               aria-label="Email Shantu Raj Gogoi"
             >
-              <Mail size={16} />
+              <Mail size={15} />
             </a>
             <a 
               href={personalInfo.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 active:scale-95 transition-all"
+              className="p-2.5 rounded-lg bg-[#111827] border border-[#1f293d] text-slate-300 hover:text-white hover:border-[#334155] active:scale-95 transition-all"
               aria-label="Instagram Handle"
             >
-              <Instagram size={16} />
+              <Instagram size={15} />
             </a>
             <button 
               onClick={scrollToTop}
-              className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 active:scale-95 transition-all ml-1"
+              className="p-2.5 rounded-lg bg-[#111827] border border-[#1f293d] text-slate-300 hover:text-white hover:border-[#334155] active:scale-95 transition-all ml-1"
               aria-label="Scroll to top"
             >
-              <ArrowUp size={16} />
+              <ArrowUp size={15} />
             </button>
           </div>
 
@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
 
           {/* Developer Attribution Card */}
-          <div className="flex flex-wrap items-center justify-center gap-2 bg-slate-900/80 px-3.5 py-2 rounded-xl border border-slate-800 text-[11px] font-mono">
+          <div className="flex flex-wrap items-center justify-center gap-2 bg-[#111827] px-3.5 py-2 rounded-lg border border-[#1f293d] text-[11px] font-mono">
             <span className="text-slate-400 flex items-center gap-1.5">
               <Code2 size={13} className="text-blue-400" />
               Engineered & Developed by

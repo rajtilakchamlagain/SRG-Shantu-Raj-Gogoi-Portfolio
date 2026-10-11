@@ -1,15 +1,15 @@
 import { internships, leadership } from '../data/portfolioData';
-import { Briefcase, Building2, Calendar, MapPin, CheckCircle, Users } from 'lucide-react';
+import { Building2, Calendar, MapPin, CheckCircle, Users } from 'lucide-react';
 
 export default function Internships() {
   return (
-    <section id="internships" className="py-16 sm:py-20 relative bg-[#090e1a] border-y border-slate-800/80">
+    <section id="internships" className="py-16 sm:py-20 relative bg-[#0e1320] border-b border-[#1f293d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
           <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
-            02. Verified Industrial Experience
+            03. Verified Industrial Experience
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
             Industry Internships & Engineering Practicums
@@ -20,11 +20,11 @@ export default function Internships() {
         </div>
 
         {/* 3 Prominent Internship Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 sm:mb-16">
           {internships.map((intern, idx) => (
             <div 
               key={idx}
-              className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-blue-500/40 transition-all hover:shadow-xl hover:shadow-blue-500/5 group"
+              className="bg-[#111827] border border-[#1f293d] rounded-xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#334155] transition-colors group"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">
@@ -37,7 +37,7 @@ export default function Internships() {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">
+                <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">
                   {intern.role}
                 </h3>
                 <h4 className="text-sm font-semibold text-slate-300 mt-1 mb-4 flex items-center gap-1.5">
@@ -50,7 +50,7 @@ export default function Internships() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <div className="mt-6 pt-4 border-t border-[#1f293d] flex items-center justify-between text-xs text-slate-400 font-mono">
                 <span className="flex items-center gap-1">
                   <MapPin size={12} />
                   {intern.location}
@@ -65,7 +65,7 @@ export default function Internships() {
         </div>
 
         {/* Leadership & Academic Department Positions */}
-        <div className="bg-slate-900/50 border border-slate-800/90 rounded-2xl p-6 sm:p-8">
+        <div className="bg-[#111827] border border-[#1f293d] rounded-xl p-6 sm:p-8">
           <h3 className="text-base sm:text-lg font-bold text-white mb-6 flex items-center gap-2">
             <Users size={18} className="text-blue-400" />
             Engineering Club Leadership & Roles
@@ -73,7 +73,7 @@ export default function Internships() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {leadership.map((item, idx) => (
-              <div key={idx} className="bg-slate-950/60 border border-slate-800/80 rounded-xl p-5 space-y-2">
+              <div key={idx} className="bg-[#0b0f19] border border-[#1f293d] rounded-lg p-5 space-y-2">
                 <div className="flex items-center justify-between text-xs font-mono">
                   <span className="text-blue-400 font-bold">{item.org}</span>
                   <span className="text-slate-500">{item.period}</span>
