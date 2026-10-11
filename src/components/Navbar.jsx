@@ -1,116 +1,176 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Download, Mail, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Menu, X, Mail, ChevronRight, Home, Wrench, Briefcase, GraduationCap, Send } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import SRGLogo from './SRGLogo';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('about');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
+      
+      const sections = ['about', 'expertise', 'projects', 'experience', 'contact'];
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            setActiveTab(section);
+            break;
+          }
+        }
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Expertise", href: "#expertise" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" }
+    { name: "About", href: "#about", id: "about", icon: Home },
+    { name: "Expertise", href: "#expertise", id: "expertise", icon: Wrench },
+    { name: "Projects", href: "#projects", id: "projects", icon: Briefcase },
+    { name: "Roadmap", href: "#experience", id: "experience", icon: GraduationCap },
+    { name: "Contact", href: "#contact", id: "contact", icon: Send }
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-[#070b14]/90 backdrop-blur-md border-b border-slate-800/80 py-3 shadow-xl' 
-        : 'bg-transparent py-5'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          
-          {/* Logo / Personal Brand */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center font-bold text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-              SG
-            </div>
-            <div>
-              <div className="text-base font-bold text-white tracking-tight flex items-center gap-1.5">
-                {personalInfo.name}
+    <>
+      {/* ==========================================================
+          TOP NAVIGATION BAR (DESKTOP & MOBILE HEADER)
+         ========================================================== */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-safe ${
+        scrolled 
+          ? 'bg-[#070b14]/90 backdrop-blur-xl border-b border-slate-800/80 py-2.5 sm:py-3 shadow-xl' 
+          : 'bg-transparent py-3 sm:py-5'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            
+            {/* SRG Brand Identity with Custom Monogram Logo */}
+            <a href="#" className="flex items-center gap-2.5 sm:gap-3 group active:scale-95 transition-transform">
+              <SRGLogo className="w-8 h-8 sm:w-10 sm:h-10 group-hover:scale-105 transition-transform" />
+              <div>
+                <div className="text-sm sm:text-base font-bold text-white tracking-tight flex items-center gap-1.5 leading-none">
+                  <span>{personalInfo.name}</span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 font-semibold hidden xs:inline-block">
+                    {personalInfo.monogram}
+                  </span>
+                </div>
+                <div className="text-[11px] sm:text-xs text-slate-400 font-mono tracking-wide mt-0.5">
+                  Mechanical & Systems Engineer
+                </div>
               </div>
-              <div className="text-xs text-slate-400 font-mono tracking-wide">
-                Mechanical & Systems Engineer
-              </div>
-            </div>
-          </a>
+            </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
-            {navLinks.map((link) => (
+            {/* Desktop Navigation Links */}
+            <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all ${
+                    activeTab === link.id
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800/70'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            {/* Desktop Action */}
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-0.5"
+              >
+                <Mail size={15} />
+                <span>Get in Touch</span>
+              </a>
+            </div>
+
+            {/* Mobile Top Right Badge / Menu trigger */}
+            <div className="md:hidden flex items-center gap-2">
+              <a
+                href="#contact"
+                className="px-3 py-1.5 rounded-lg bg-blue-600 active:bg-blue-700 text-white text-xs font-bold transition-all"
+              >
+                Contact
+              </a>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-xl bg-slate-850/90 border border-slate-700/80 text-slate-200 active:scale-90 transition-transform"
+                aria-label="Toggle navigation"
+              >
+                {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Sheet */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#070b14]/98 border-b border-slate-800/90 px-4 pt-3 pb-6 space-y-3 backdrop-blur-2xl animate-in slide-in-from-top-3 duration-200 shadow-2xl">
+            <div className="flex flex-col space-y-1">
+              {navLinks.map((link) => {
+                const IconComponent = link.icon;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium text-slate-200 active:bg-slate-800/80 transition-colors"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <IconComponent size={16} className="text-blue-400" />
+                      {link.name}
+                    </span>
+                    <ChevronRight size={14} className="text-slate-500" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* ==========================================================
+          NATIVE MOBILE BOTTOM DOCK (App-Like Ergonomic Navigation)
+         ========================================================== */}
+      <nav 
+        aria-label="Mobile Dock"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#070b14]/90 backdrop-blur-2xl border-t border-slate-800/80 pb-safe shadow-[0_-10px_25px_rgba(0,0,0,0.5)]"
+      >
+        <div className="grid grid-cols-5 h-16 max-w-md mx-auto items-center px-1">
+          {navLinks.map((link) => {
+            const IconComponent = link.icon;
+            const isActive = activeTab === link.id;
+            return (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 rounded-full transition-all"
+                className="flex flex-col items-center justify-center h-full w-full active:scale-90 transition-all duration-150"
               >
-                {link.name}
+                <div className={`p-1.5 rounded-xl transition-all ${
+                  isActive ? 'bg-blue-600/20 text-blue-400' : 'text-slate-400'
+                }`}>
+                  <IconComponent size={18} className={isActive ? 'stroke-[2.5]' : 'stroke-[1.8]'} />
+                </div>
+                <span className={`text-[10px] font-medium tracking-tight mt-0.5 ${
+                  isActive ? 'text-blue-400 font-bold' : 'text-slate-400'
+                }`}>
+                  {link.name}
+                </span>
               </a>
-            ))}
-          </nav>
-
-          {/* Quick CTA Actions */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-0.5"
-            >
-              <Mail size={16} />
-              <span>Contact Senior</span>
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 hover:text-white"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-
+            );
+          })}
         </div>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0a0f1d] border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 animate-in fade-in slide-in-from-top-4 duration-200">
-          <div className="flex flex-col space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-          <div className="pt-2 border-t border-slate-800">
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold"
-            >
-              <Mail size={16} />
-              <span>Get in Touch</span>
-            </a>
-          </div>
-        </div>
-      )}
-    </header>
+      </nav>
+    </>
   );
 }

@@ -1,20 +1,31 @@
 export const personalInfo = {
   name: "Shantu Raj Gogoi",
+  monogram: "SRG",
   role: "Mechanical & Systems Engineer",
-  tagline: "Final-Year Mechanical Engineering Undergraduate passionate about CAD Product Design, Kinematic Simulations, UAVs, and Mechatronics Systems.",
+  tagline: "Mechanical Engineering Undergraduate passionate about CAD Product Design, Kinematic Simulations, UAVs, and Mechatronics Systems.",
   location: "Assam, India",
   institution: "Barak Valley Engineering College (ASTU)",
-  degree: "B.Tech in Mechanical Engineering (2022 - 2026)",
+  degree: "B.Tech in Mechanical Engineering (2023 - 2027)",
+  graduationYear: "2027",
   email: "gogoishanturaj@gmail.com",
   instagram: "https://instagram.com/srg.phics",
   linkedin: "https://linkedin.com",
-  status: "Open to Full-Time Roles & Graduate Engineering Trainee (GET) Positions",
+  status: "Open to Engineering Trainee, Mechatronics & CAD Roles (Class of 2027)",
+};
+
+export const creatorInfo = {
+  name: "Rajtilak Chamlagain",
+  role: "BTech CSE & System Developer",
+  email: "rjtiksrm@gmail.com",
+  github: "https://github.com/rajtilakchamlagain",
+  linkedin: "https://linkedin.com/in/rajtilak-chamlagain-7129942a3",
+  portfolio: "https://rajtilak.me"
 };
 
 export const stats = [
   { label: "Engineering Disciplines", value: "CAD & Mechatronics" },
-  { label: "Graduation Target", value: "Class of 2026" },
-  { label: "Key CAD Software", value: "SolidWorks & Simulation" },
+  { label: "Graduation Target", value: "Class of 2027" },
+  { label: "Key CAD Software", value: "SolidWorks & Motion" },
   { label: "Hands-on Projects", value: "8+ Prototypes & Studies" }
 ];
 
@@ -273,11 +284,11 @@ export const projects = [
 export const educationAndTimeline = [
   {
     type: "education",
-    period: "2022 — 2026",
+    period: "2023 — 2027",
     role: "B.Tech in Mechanical Engineering",
     organization: "Barak Valley Engineering College (ASTU)",
     location: "Karimganj / Assam, India",
-    highlight: "Final Year Undergraduate",
+    highlight: "Class of 2027",
     description: "Rigorous coursework encompassing Machine Design, Theory of Machines, Kinematics & Dynamics, Fluid Mechanics, Thermodynamics, Manufacturing Technology, and Finite Element Analysis fundamentals.",
     bulletPoints: [
       "Specialized project work in mechanical product modeling, robotics, and CAD assembly verification.",
@@ -300,7 +311,7 @@ export const educationAndTimeline = [
   },
   {
     type: "education",
-    period: "2020 — 2022",
+    period: "2021 — 2023",
     role: "Higher Secondary (Class XII — Science)",
     organization: "Assam Higher Secondary Education Council",
     location: "Assam, India",
@@ -314,18 +325,18 @@ export const certificationsAndAchievements = [
     title: "SolidWorks Parametric Modeling & Assemblies",
     issuer: "Independent CAD Intensive Project Studies",
     badge: "CAD Certified",
-    date: "2023 - 2024"
+    date: "2024"
   },
   {
     title: "Microcontroller Systems & Mechatronics Prototyping",
     issuer: "Practical Hardware Project Implementation",
     badge: "Hardware & IoT",
-    date: "2024"
+    date: "2024 - 2025"
   },
   {
     title: "UAV Aerial Dynamics & Telemetry Integration",
     issuer: "F450 Experimental Drone Assembly",
     badge: "Avionics",
-    date: "2024 - 2025"
+    date: "2025"
   }
 ];
